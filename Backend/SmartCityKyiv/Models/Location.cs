@@ -14,8 +14,8 @@ namespace SmartCityKyiv.Models
         [Required]
         public string Type { get; set; }
         [Required]
-        public int Longitude { get; set; }
+        public double Longitude { get; set; }
         [Required]
-        public int Latitude { get; set; }
+        public double Latitude { get; set; }
     }
 }
