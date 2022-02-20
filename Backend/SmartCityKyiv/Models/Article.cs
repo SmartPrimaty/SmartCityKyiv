@@ -13,6 +13,7 @@ namespace SmartCityKyiv.Models
         [Required]
         public string Title { get; set; }
         public string Text { get; set; }
+        [DataType(DataType.DateTime)]
         public DateTime PublicationDate { get; set; }
 
     }
