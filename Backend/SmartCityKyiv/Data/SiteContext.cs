@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using SmartCityKyiv.Models;
 using System.Security.Cryptography;
 using System.Text;
+using SmartCityKyiv.Services;
 
 namespace SmartCityKyiv.Data
 {
@@ -51,13 +52,13 @@ namespace SmartCityKyiv.Data
                 }
             };
 
-            var password = CreateHash("admin");
+            var password = Utilities.CreateHashString("admin");
             var admin = new User()
             {
+                Id = 1,
                 Email = "admin@smartcitykyiv.ua",
                 Password = password,
-                Name = "Administrator",
-                Role = roles[0],
+                FullName = "Administrator",
                 RoleId = 1
             };
 
@@ -69,13 +70,6 @@ namespace SmartCityKyiv.Data
         }
 
 
-        private string CreateHash(string source)
-        {
-            SHA256 sha256 = SHA256.Create();
-            byte[] sourceBytes = Encoding.UTF8.GetBytes(source);
-            byte[] targerBytes = sha256.ComputeHash(sourceBytes);
-            string target = Encoding.UTF8.GetString(targerBytes);
-            return target;
-        }
+        
     }
 }
