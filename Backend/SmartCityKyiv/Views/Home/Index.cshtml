@@ -1,4 +1,5 @@
-﻿@{ ViewData["Title"] = "Головна"; }
+﻿@model SmartCityKyiv.ViewModels.MainPageViewModel 
+@{ ViewData["Title"] = "Головна"; }
 
 <nav>
     <p>
@@ -73,50 +74,34 @@
     </p>
 </nav>
 <section class="mainpage center">
+    
     <section>
         <a href="./news_list.html">
             <h2>Останні новини</h2>
         </a>
+        @foreach (var article in Model.Articles)
+        {
         <section class="news-box">
             <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
+                <h2 class="news-header">@article.Title</h2>
             </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
+            <p class="news-text">@article.Text</p>
         </section>
-        <section class="news-box">
-            <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
-            </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
-        </section>
-        <section class="news-box">
-            <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
-            </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
-        </section>
+        }
+        
     </section>
     <section>
         <a href="./news_list.html">
             <h2>Останні заходи</h2>
         </a>
+        @foreach (var Event in Model.Events)
+        {
         <section class="news-box">
             <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
+                <h2 class="news-header">@Event.Name</h2>
             </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
+            <p class="news-text">@Event.Description</p>
         </section>
-        <section class="news-box">
-            <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
-            </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
-        </section>
-        <section class="news-box">
-            <a href="./news_page.html">
-                <h2 class="news-header">Заголовок новини</h2>
-            </a>
-            <p class="news-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt, dolores excepturi doloremque cum quia praesentium explicabo consequatur aut suscipit porro totam fugiat maiores alias nostrum ab consequuntur. Reiciendis, numquam!</p>
-        </section>
+        }
     </section>
 </section>

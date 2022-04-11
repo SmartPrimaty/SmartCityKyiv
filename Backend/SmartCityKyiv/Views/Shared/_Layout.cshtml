@@ -18,7 +18,10 @@
         <a asp-area="" asp-controller="Home" asp-action="Index">
             <h1>Smart City Kyiv</h1>
         </a>
+        @if (User.Identity.IsAuthenticated)
+        {
         <p class="user-name">Іванов Іван Іванович</p>
+        }
     </header>
     <main class="grid-container">
         @RenderBody()
