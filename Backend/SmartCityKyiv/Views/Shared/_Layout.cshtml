@@ -1,23 +1,29 @@
 ﻿<!DOCTYPE html>
 <html lang="ua">
 <head itemscope itemtype="http://schema.org/WebSite">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://kyiv.ua/" />
+    <link rel="shortlink" href="https://kyiv.ua/" />
+    <meta charset="utf-8">
+    <meta name="description" content="The official web site for the City of Kyiv, Ukraine." />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>@ViewData["Title"] - SmartCityKyiv</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body itemscope itemtype="http://schema.org/WebPage">
     <header class="border-bottom">
-        <a class="h1" asp-area="" asp-controller="Home" asp-action="Index">Smart City Kyiv</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <h1>Smart City Kyiv</h1>
+        </a>
+        <p class="user-name">Іванов Іван Іванович</p>
     </header>
-    <section class="center">
+    <main class="grid-container">
         @RenderBody()
-    </section>
-
-    <footer class="footer border-top">
+    </main>
+    <footer class="border-top">
         Created by Petselia Artem, Potapchuk Anna, Anastasia Grabovska, Polina Kuptsova and Belitskiy Oleksandr
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
