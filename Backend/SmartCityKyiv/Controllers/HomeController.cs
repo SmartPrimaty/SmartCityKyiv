@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartCityKyiv.Data;
 using SmartCityKyiv.Models;
+using SmartCityKyiv.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,27 +13,85 @@ namespace SmartCityKyiv.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private SiteContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SiteContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+            var articles = context.Articles.OrderByDescending(a => a.PublicationDate).Take(3).ToList();
+            var events = context.Events.OrderByDescending(e => e.DateFrom).Take(3).ToList();
+
+            var viewModel = new MainPageViewModel()
+            {
+                Articles = articles,
+                Events = events
+            };
+
+            return View(viewModel);
+            //TO DO - change mock to database data
+
+            //var mock = new MainPageViewModel()
+            //{
+            //    Articles = new List<Article>()
+            //    {
+            //        new Article
+            //        {
+            //            Title = "Заголовок 1",
+            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
+            //        },
+            //        new Article
+            //        {
+            //            Title = "Заголовок 2",
+            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
+            //        },
+            //        new Article
+            //        {
+            //            Title = "Заголовок 3",
+            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
+            //        }
+            //    },
+            //    Events = new List<Event>()
+            //    {
+            //        new Event
+            //        {
+            //            Name ="Захід 1",
+            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
+            //        },
+            //        new Event
+            //        {
+            //            Name ="Захід 2",
+            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
+            //        },
+            //        new Event
+            //        {
+            //            Name ="Захід 3",
+            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
+            //        }
+            //    }
+            //};
+
+
         }
 
-        public IActionResult Privacy()
+        public IActionResult Covid()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Services()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+
+        public IActionResult War()
+        {
+            return View();
+        }
+
     }
 }
