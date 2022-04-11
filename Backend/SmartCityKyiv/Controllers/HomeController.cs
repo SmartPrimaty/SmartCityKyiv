@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartCityKyiv.Data;
 using SmartCityKyiv.Models;
 using SmartCityKyiv.ViewModels;
 using System;
@@ -12,9 +13,21 @@ namespace SmartCityKyiv.Controllers
 {
     public class HomeController : Controller
     {
+        private SiteContext context;
+
+        public HomeController(SiteContext context)
+        {
+            this.context = context;
+        }
+
 
         public IActionResult Index()
         {
+            var articles = context.Articles.OrderByDescending(a => a.PublicationDate).Take(3).ToList();
+            var events = context.Events.OrderByDescending(e => e.DateFrom).Take(3).ToList();
+
+            //TO DO - change mock to database data
+
             var viewModel = new MainPageViewModel()
             {
                 Articles = new List<Article>()
