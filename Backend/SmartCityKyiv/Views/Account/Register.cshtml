@@ -1,0 +1,45 @@
+﻿@model SmartCityKyiv.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Регістрація";
+}
+
+<h2>Реєстрація</h2>
+<form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
+    <div>
+        <div class="form-group">
+            <label asp-for="Email">Введіть ваш email:</label>
+            <br />
+            <input asp-for="Email" type="email" placeholder="example@gmail.com">
+            <span asp-validation-for="Email" />
+        </div>
+        <div class="form-group">
+            <label asp-for="FullName">Введіть ваш ПІБ:</label>
+            <br />
+            <input asp-for="FullName" type="text" placeholder="Іванов Іван Іванович">
+            <span asp-validation-for="FullName" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Придумайте пароль:</label>
+            <br />
+            <input asp-for="Password" type="password" placeholder="••••••••">
+            <span asp-validation-for="Password" />
+        </div>
+        <div class="form-group">
+            <label asp-for="PasswordConfirm">Повторіть пароль:</label>
+            <br />
+            <input asp-for="PasswordConfirm" type="password" placeholder="••••••••">
+            <span asp-validation-for="PasswordConfirm" />
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <input type="submit" value="Зареєструватися" class="btn-primary">
+        </div>
+        <br>
+        <div class="form-group">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn-primary">Відміна</a>
+        </div>
+    </div>
+</form>
+    <br>
+    <br>
