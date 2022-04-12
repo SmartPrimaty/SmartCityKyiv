@@ -18,6 +18,7 @@ a:hover {
   font-weight: bolder;
 }
 
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
@@ -25,9 +26,12 @@ a:hover {
   margin-top: 10px;
 }
 
-.btn-primary:hover {
-  font-size: larger;
-}
+ .btn-primary:hover {
+       color: #fff;
+       background-color: #0069d9;
+       border-color: #0062cc;
+ }
+  
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
