@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Форма для додавання новини";
+}
+@model SmartCityKyiv.Models.Article
+<main>
+    <form method="post" asp-action="Create">
+        <h2>Створити новину</h2>
+        <input asp-for="Title" class="add-form" type="text" size="100" placeholder="Заголовок">
+        <span asp-validation-for="Title"></span>
+        <br>
+        <p>Текст новини:</p>
+        <textarea asp-for="Text" class="add-form" rows="20" cols="100"></textarea>
+        <br>
+        <input type="submit" value="Додати" class="btn-primary">
+        <a asp-controller="News" asp-action="Index" type="button" class="btn-primary a-btn-primary">Відміна</a>
+        <br>
+    </form>  
+</main>

@@ -83,7 +83,7 @@
             @foreach (var article in Model.Articles)
             {
                 <section class="news-box">
-                    <a href="./news_page.html">
+                    <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
                         <h2 class="news-header">@article.Title</h2>
                     </a>
                     <p class="news-text">@article.Text</p>
@@ -98,7 +98,7 @@
             @foreach (var Event in Model.Events)
             {
                 <section class="news-box">
-                    <a href="./news_page.html">
+                    <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
                         <h2 class="news-header">@Event.Name</h2>
                     </a>
                     <p class="news-text">@Event.Description</p>

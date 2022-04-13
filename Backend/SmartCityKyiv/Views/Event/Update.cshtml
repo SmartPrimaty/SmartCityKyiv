@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Форма для редагування заходів";
+}
+@model SmartCityKyiv.Models.Event
+<main>
+    <form method="post" asp-action="Update">
+        <h2>Редагувати подію</h2>
+        <input asp-for="Id" type="hidden" />
+        <input asp-for="Name" class="add-form" type="text" size="100" placeholder="Заголовок">
+        <span asp-validation-for="Name"></span>
+        <br>
+        <table>
+            <td>
+                <p>Дата початку події:</p>
+                <input asp-for="DateFrom" type="date">
+                <span asp-validation-for="DateFrom"></span>
+                <br>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <p>Дата кінця події:</p>
+                <input asp-for="DateTo" type="date">
+                <br>
+            </td>
+        </table>
+        <p>Опис події:</p>
+        <textarea asp-for="Description" class="add-form" rows="20" cols="100"></textarea>
+        <br>
+        <input type="submit" value="Редагувати" class="btn-primary">
+        <a asp-controller="Event" asp-action="Event" asp-route-id="@Model.Id" type="button" class="btn-primary a-btn-primary">Відміна</a> <br>
+    </form>
+</main>
