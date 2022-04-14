@@ -33,49 +33,6 @@ namespace SmartCityKyiv.Controllers
             };
 
             return View(viewModel);
-            //TO DO - change mock to database data
-
-            //var mock = new MainPageViewModel()
-            //{
-            //    Articles = new List<Article>()
-            //    {
-            //        new Article
-            //        {
-            //            Title = "Заголовок 1",
-            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
-            //        },
-            //        new Article
-            //        {
-            //            Title = "Заголовок 2",
-            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
-            //        },
-            //        new Article
-            //        {
-            //            Title = "Заголовок 3",
-            //            Text = "lisdhaygdsaugdauyfsdygasdsuydkausdksakdf"
-            //        }
-            //    },
-            //    Events = new List<Event>()
-            //    {
-            //        new Event
-            //        {
-            //            Name ="Захід 1",
-            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
-            //        },
-            //        new Event
-            //        {
-            //            Name ="Захід 2",
-            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
-            //        },
-            //        new Event
-            //        {
-            //            Name ="Захід 3",
-            //            Description = "ішврфдвнпфігнпвфніавлшгіфнавіфнав"
-            //        }
-            //    }
-            //};
-
-
         }
 
         public IActionResult Covid()
