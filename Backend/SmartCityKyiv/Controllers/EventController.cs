@@ -28,7 +28,7 @@ namespace SmartCityKyiv.Controllers
         //Post
         [HttpPost]
         public IActionResult Create(Event Event)
-        {
+        {          
             if (ModelState.IsValid)
             {
                 context.Events.Add(Event);
