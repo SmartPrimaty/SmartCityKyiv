@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Редагування новини";
+}
+@model SmartCityKyiv.Models.Article
+
+<main>
+    <form method="post" asp-action="Update">
+        <h2>Редагувати новину</h2>
+        <input asp-for="Id" type="hidden" />
+        <input asp-for="PublicationDate" type="hidden" />
+        <input asp-for="Title" class="add-form" type="text" size="100" placeholder="Заголовок">
+        <span asp-validation-for="Title"></span>
+        <br>
+        <p>Текст новини:</p>
+        <textarea asp-for="Text" class="add-form" rows="20" cols="100"></textarea>
+        <br>
+        <input type="submit" value="Редагувати" class="btn-primary">
+        <a asp-controller="News" asp-action="Article" asp-route-id="@Model.Id" type="button" value="Відмінити" class="btn-primary a-btn-primary">Відміна</a>
+        <br>
+    </form>
+</main>

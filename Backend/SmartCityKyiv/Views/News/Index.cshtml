@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Новини";
+
+}
+@model IEnumerable<SmartCityKyiv.Models.Article>
+
+    <section class="center">
+        <a asp-controller="News" asp-action="Create">
+            <h2>Бажаєте створити новину?</h2>
+        </a>
+    </section>
+    @foreach (Article article in Model)
+    {
+        <section class="news-box">
+            <a asp-action="Article" asp-route-id="@article.Id">
+                <h2 class="news-header">@article.Title</h2>
+            </a>
+            <p class="news-text">@article.Text</p>
+        </section>
+    }
