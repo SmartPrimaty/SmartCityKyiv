@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartCityKyiv.Data;
 using SmartCityKyiv.Models;
 using System;
@@ -21,14 +22,16 @@ namespace SmartCityKyiv.Controllers
             return View(events);
         }
         //Get
+        [Authorize(Roles = "moderator")]
         public IActionResult Create()
         {
             return View();
         }
         //Post
         [HttpPost]
+        [Authorize(Roles = "moderator")]
         public IActionResult Create(Event Event)
-        {
+        {          
             if (ModelState.IsValid)
             {
                 context.Events.Add(Event);
@@ -50,6 +53,7 @@ namespace SmartCityKyiv.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "moderator")]
         public IActionResult Delete(int id)
         {
             var Event = context.Events.FirstOrDefault(a => a.Id == id);
@@ -57,6 +61,7 @@ namespace SmartCityKyiv.Controllers
             context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+        [Authorize(Roles = "moderator")]
         public IActionResult Update(int id)
         {
             var Event = context.Events.FirstOrDefault(a => a.Id == id);
@@ -67,6 +72,7 @@ namespace SmartCityKyiv.Controllers
             return View(Event);
         }
         [HttpPost]
+        [Authorize(Roles = "moderator")]
         public IActionResult Update(Event Event)
         {
             if (Event is null)

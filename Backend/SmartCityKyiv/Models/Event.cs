@@ -14,8 +14,9 @@ namespace SmartCityKyiv.Models
         public string Name { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime DateFrom { get; set; }
-        [DataType(DataType.DateTime)]
+        [ValidDates]
+        public DateTime? DateFrom { get; set; }
+        [DataType(DataType.DateTime)]       
         public DateTime? DateTo { get; set; }
         public string Description { get; set; }
     }

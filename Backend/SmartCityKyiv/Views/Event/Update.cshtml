@@ -13,7 +13,6 @@
             <td>
                 <p>Дата початку події:</p>
                 <input asp-for="DateFrom" type="date">
-                <span asp-validation-for="DateFrom"></span>
                 <br>
             </td>
             <td></td>
@@ -25,6 +24,8 @@
                 <br>
             </td>
         </table>
+        <br>
+        <span asp-validation-for="DateFrom"></span>
         <p>Опис події:</p>
         <textarea asp-for="Description" class="add-form" rows="20" cols="100"></textarea>
         <br>
