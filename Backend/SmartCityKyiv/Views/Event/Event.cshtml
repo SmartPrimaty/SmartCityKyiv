@@ -5,7 +5,7 @@
 
 <main>
     <h2 class="news-header">@Model.Name</h2>
-    <p class="event-date"><i>@Model.DateFrom.ToShortDateString()  @if (Model.DateTo.HasValue) { @String.Format("- {0}", Model.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>                    
+    <p class="event-date"><i>@Model.DateFrom.Value.ToShortDateString()  @if (Model.DateTo.HasValue) { @String.Format("- {0}", Model.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>                    
     @foreach (var paragraph in Model.Description.Split("\n", StringSplitOptions.RemoveEmptyEntries))
     {
         <p>@paragraph</p>
@@ -16,4 +16,5 @@
     <a asp-controller="Event" asp-action="Update" asp-route-id="@Model.Id" type="button" class="btn-primary">Редагувати</a>
     <a class="btn-primary a-btn-primary" type="button" href="javascript:void(0);" onclick="history.go(-1);">Назад</a>
     <br><br>
+    }
 </main> 

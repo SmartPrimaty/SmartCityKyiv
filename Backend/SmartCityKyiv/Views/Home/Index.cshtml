@@ -25,35 +25,35 @@
             </a>
         </p>
         <p>
-            <a asp-controller="Map">
+            <a asp-controller="Map" asp-action="Parking">
                 <img alt="Паркування" src="~/img/image3.jpg"
                      width="40" height="40">
                 Паркування
             </a>
         </p>
         <p>
-            <a asp-controller="Map">
+            <a asp-controller="Map" asp-action="Batteries">
                 <img alt="Батарейка" src="~/img/image4.jpg"
                      width="40" height="40">
                 Батарейка
             </a>
         </p>
         <p>
-            <a asp-controller="Map">
+            <a asp-controller="Map" asp-action="Trash">
                 <img alt="Сортування сміття" src="~/img/image6.jpg"
                      width="40" height="40">
                 Сортування сміття
             </a>
         </p>
         <p>
-            <a asp-controller="Map">
+            <a asp-controller="Map" asp-action="Sport">
                 <img alt="Спортивні майданчики" src="~/img/image8.jpg"
                      width="40" height="40">
                 Спортивні майданчики
             </a>
         </p>
         <p>
-            <a asp-controller="Map">
+            <a asp-controller="Map" asp-action="Parks">
                 <img alt="Парки та рекреаційні зони" src="~/img/image5.jpg"
                      width="40" height="40">
                 Парки та рекреаційні зони
@@ -106,7 +106,7 @@
                     <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
                         <h2 class="news-header">@Event.Name</h2>
                     </a>
-                    <p class="event-date"><i>@Event.DateFrom.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
+                    <p class="event-date"><i>@Event.DateFrom.Value.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
                     <p>@Event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, Event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
                     @if (Event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
                     {
