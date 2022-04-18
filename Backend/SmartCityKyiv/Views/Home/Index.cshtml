@@ -82,12 +82,13 @@
             </a>
             @foreach (var article in Model.Articles)
             {
-                <section class="news-box">
-                    <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
-                        <h2 class="news-header">@article.Title</h2>
-                    </a>
-                    <p class="news-text">@article.Text</p>
-                </section>
+        <section class="news-box">
+            <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
+                <h2 class="news-header">@article.Title</h2>
+            </a>
+            <p class="event-date"><i>@article.PublicationDate</i></p>
+            <p class="news-text">@article.Text</p>
+        </section>
             }
 
         </section>
@@ -97,12 +98,13 @@
             </a>
             @foreach (var Event in Model.Events)
             {
-                <section class="news-box">
-                    <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
-                        <h2 class="news-header">@Event.Name</h2>
-                    </a>
-                    <p class="news-text">@Event.Description</p>
-                </section>
+        <section class="news-box">
+            <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
+                <h2 class="news-header">@Event.Name</h2>
+            </a>
+            <p class="event-date"><i>@Event.DateFrom.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
+            <p class="news-text">@Event.Description</p>
+        </section>
             }
         </section>
     </section>
