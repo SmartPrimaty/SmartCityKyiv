@@ -86,6 +86,7 @@
                     <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
                         <h2 class="news-header">@article.Title</h2>
                     </a>
+                    <p class="event-date"><i>@article.PublicationDate</i></p>
                     <p>@article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
                     @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
                     {
@@ -105,6 +106,7 @@
                     <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
                         <h2 class="news-header">@Event.Name</h2>
                     </a>
+                    <p class="event-date"><i>@Event.DateFrom.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
                     <p>@Event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, Event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
                     @if (Event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
                     {
