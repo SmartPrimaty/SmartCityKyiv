@@ -1,4 +1,3 @@
-﻿
 @{
     ViewData["Title"] = "Новини";
 
@@ -13,12 +12,14 @@
     </a>
 </section>
 }
+
 @foreach (Article article in Model)
 {
-    <section class="news-box">
-        <a asp-action="Article" asp-route-id="@article.Id">
-            <h2 class="news-header">@article.Title</h2>
-        </a>
-        <p class="news-text">@article.Text</p>
-    </section>
+  <section class="news-box">
+      <a asp-action="Article" asp-route-id="@article.Id">
+          <h2 class="news-header">@article.Title</h2>
+      </a>
+      <p class="event-date"><i>@article.PublicationDate</i></p>
+      <p class="news-text">@article.Text</p>
+  </section>
 }

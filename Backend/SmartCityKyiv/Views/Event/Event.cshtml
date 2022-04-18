@@ -1,14 +1,16 @@
-﻿@{
+@{
     ViewData["Title"] = Model.Name;
 }
 @model SmartCityKyiv.Models.Event
 
 <main>
     <h2 class="news-header">@Model.Name</h2>
+    <p class="event-date"><i>@Model.DateFrom.ToShortDateString()  @if (Model.DateTo.HasValue) { @String.Format("- {0}", Model.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
     <p class="news-text">@Model.Description</p>
     @if (User.IsInRole("moderator"))
     {
     <a asp-controller="Event" asp-action="Delete" asp-route-id="@Model.Id" type="button" class="btn-primary">Видалити</a>
-    <a asp-controller="Event" asp-action="Update" asp-route-id="@Model.Id" type="button" class="btn-primary">Редагувати</a> <br><br>
-    }
+    <a asp-controller="Event" asp-action="Update" asp-route-id="@Model.Id" type="button" class="btn-primary">Редагувати</a>
+    <a class="btn-primary a-btn-primary" type="button" href="javascript:void(0);" onclick="history.go(-1);">Назад</a>
+    <br><br>
 </main> 
