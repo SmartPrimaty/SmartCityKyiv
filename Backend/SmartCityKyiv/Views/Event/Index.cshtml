@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Заходи";
 
 }
@@ -20,7 +19,11 @@
             <a asp-action="Event" asp-route-id="@_event.Id">
                 <h2 class="news-header">@_event.Name</h2>
             </a>
-            <p class="news-text">@_event.Description</p>
+            <p>@_event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, _event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                @if (_event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
+                {
+            <text>...</text>}
+            </p>
         </section>
     }
 </main>

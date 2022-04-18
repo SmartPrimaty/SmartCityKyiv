@@ -86,7 +86,11 @@
                     <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
                         <h2 class="news-header">@article.Title</h2>
                     </a>
-                    <p class="news-text">@article.Text</p>
+                    <p>@article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                    @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
+                    {
+                        <text>...</text>
+                    }</p>
                 </section>
             }
 
@@ -101,7 +105,11 @@
                     <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
                         <h2 class="news-header">@Event.Name</h2>
                     </a>
-                    <p class="news-text">@Event.Description</p>
+                    <p>@Event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, Event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                    @if (Event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
+                    {
+                        <text>...</text>
+                    }</p>
                 </section>
             }
         </section>
