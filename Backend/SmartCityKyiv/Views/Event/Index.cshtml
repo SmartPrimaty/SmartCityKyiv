@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Заходи";
 
 }
@@ -16,13 +15,17 @@
     }
     @foreach (Event _event in Model)
     {
-<section class="news-box">
-    <a asp-action="Event" asp-route-id="@_event.Id">
-        <h2 class="news-header">@_event.Name</h2>
-    </a>
-    <p class="event-date"><i>@_event.DateFrom.Value.ToShortDateString() @if (_event.DateTo.HasValue) { @String.Format("- {0}", @_event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
-    <p class="news-text">@_event.Description</p>
-</section>
+        <section class="news-box">
+            <a asp-action="Event" asp-route-id="@_event.Id">
+                <h2 class="news-header">@_event.Name</h2>
+            </a>
+            <p class="event-date"><i>@_event.DateFrom.Value.ToShortDateString() @if (_event.DateTo.HasValue) { @String.Format("- {0}", @_event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
+            <p>@_event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, _event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                @if (_event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
+                {
+            <text>...</text>}
+            </p>
+        </section>
     }
 </main>
 
