@@ -22,7 +22,7 @@
         </a>
         @if (User.Identity.IsAuthenticated)
         {
-        <p class="user-name">Іванов Іван Іванович</p>
+        <p class="user-name">@User.Identity.Name</p>
         }
     </header>
     <main>

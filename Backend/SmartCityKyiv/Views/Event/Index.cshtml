@@ -6,11 +6,14 @@
 @model IEnumerable<SmartCityKyiv.Models.Event>
 
 <main>
+    @if (User.IsInRole("moderator"))
+    {
     <section class="center">
         <a asp-controller="Event" asp-action="Create">
             <h2>Бажаєте створити захід?</h2>
         </a>
     </section>
+    }
     @foreach (Event _event in Model)
     {
         <section class="news-box">

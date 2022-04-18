@@ -6,6 +6,9 @@
 <main>
     <h2 class="news-header">@Model.Name</h2>
     <p class="news-text">@Model.Description</p>
+    @if (User.IsInRole("moderator"))
+    {
     <a asp-controller="Event" asp-action="Delete" asp-route-id="@Model.Id" type="button" class="btn-primary">Видалити</a>
     <a asp-controller="Event" asp-action="Update" asp-route-id="@Model.Id" type="button" class="btn-primary">Редагувати</a> <br><br>
+    }
 </main> 
