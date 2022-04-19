@@ -20,11 +20,16 @@
             <h2 class="news-header">@article.Title</h2>
         </a>
         <p class="event-date"><i>@article.PublicationDate</i></p>
-        <p>@article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
-        @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
-        {
-            <text>...</text>
-        }</p>
+        <p>
+            @if (article.Text is not null)
+            {
+                @article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
+                {
+                    <text>...</text>
+                }
+            }
+            </p>
     </section>
 }
 

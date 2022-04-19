@@ -17,8 +17,23 @@ namespace SmartCityKyiv.Controllers
             this.context = context;
         }
         public IActionResult Index()
-        {
-            IEnumerable<Event> events = context.Events.OrderByDescending(e => e.DateFrom);
+        {           
+            List<Event> newEvents = new List<Event>();
+            List<Event> oldEvents = new List<Event>();
+            foreach(Event _event in context.Events)
+            {
+                if(_event.DateFrom.Value.Date<DateTime.Now.Date && _event.DateTo.HasValue && _event.DateTo.Value.Date<DateTime.Now.Date)
+                {
+                    oldEvents.Add(_event);
+                }
+                else
+                {
+                    newEvents.Add(_event);
+                }
+            }
+            List<Event> events = new List<Event>();
+            events.AddRange(newEvents.OrderBy(e => e.DateFrom));
+            events.AddRange(oldEvents.OrderByDescending(e => e.DateFrom));
             return View(events);
         }
         //Get
