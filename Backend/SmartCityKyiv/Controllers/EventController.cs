@@ -22,7 +22,7 @@ namespace SmartCityKyiv.Controllers
             List<Event> oldEvents = new List<Event>();
             foreach(Event _event in context.Events)
             {
-                if(_event.DateFrom.Value.Date<DateTime.Now.Date &&(!_event.DateTo.HasValue|| _event.DateTo.HasValue && _event.DateTo.Value.Date<DateTime.Now.Date))
+                if(_event.DateFrom.Value.Date<DateTime.Now.Date &&(!_event.DateTo.HasValue|| _event.DateTo.Value.Date<DateTime.Now.Date))
                 {
                     oldEvents.Add(_event);
                 }
