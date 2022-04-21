@@ -144,7 +144,6 @@ footer {
   z-index: 2;
   overflow: hidden; 
   overflow-y:scroll;
-  -webkit-overflow-scrolling: touch;
   background-color: #fff;
   width: 300px;
   max-height: 80%;
@@ -153,6 +152,10 @@ footer {
   top: 5em;
   visibility: hidden;
   border: 1px solid #e5e5e5;
+}
+
+.hover-nav::-webkit-scrollbar {
+  width: 0;
 }
 
 .nav-entity {
