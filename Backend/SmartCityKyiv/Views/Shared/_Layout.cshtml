@@ -11,23 +11,76 @@
 
     <title>@ViewData["Title"] - SmartCityKyiv</title>
 
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <link rel="icon" type="image/x-icon" href="~/img/icon.png">
     <link rel="stylesheet" href="~/css/site.css" />
-
 </head>
+
 <body itemscope itemtype="http://schema.org/WebPage">
     <header class="border-bottom">
-        <a asp-area="" asp-controller="Home" asp-action="Index">
-            <h1>Smart City Kyiv</h1>
+      <div class="header-title-box">
+        <a class="header-title" asp-controller="Home" asp-action="Index">
+          <img alt="logo" src="~/img/logo.jpg" height="80">
+          <h1>Smart City Kyiv</h1>
         </a>
+      </div>
+      <nav class="hover-nav">
+        <a class="nav-entity" asp-controller="News" asp-action="Index"> 
+          <img alt="Новини" src="~/img/image1.jpg"
+          width="40" height="40">
+          <p>Новини</p>
+        </a> 
+        <a class="nav-entity" asp-controller="Event" asp-action="Index">
+          <img alt="Заходи" src="~/img/image9.jpg"
+          width="40" height="40">
+          <p>Заходи</p>
+        </a>
+        <a class="nav-entity" asp-controller="Home" asp-action="Covid">
+          <img alt="COVID" src="~/img/image2.jpg"
+          width="40" height="40">
+          <p>Covid</p>
+        </a>
+        <a class="nav-entity" asp-controller="Map" asp-action="Parking">
+          <img alt="Паркування" src="~/img/image3.jpg"
+          width="40" height="40">
+          <p>Паркування</p>
+        </a>
+        <a class="nav-entity" asp-controller="Map" asp-action="Batteries">
+          <img alt="Батарейка" src="~/img/image4.jpg"
+          width="40" height="40">
+          <p>Батарейка</p>
+        </a>
+        <a class="nav-entity" asp-controller="Map" asp-action="Trash">
+          <img alt="Сортування сміття" src="~/img/image6.jpg"
+          width="40" height="40">
+          <p>Сортування сміття</p>
+        </a>
+        <a class="nav-entity" asp-controller="Map" asp-action="Sport">
+          <img alt="Спортивні майданчики" src="~/img/image8.jpg" 
+          width="40" height="40">
+          <p>Спортивні майданчики</p>
+        </a>
+        <a class="nav-entity" asp-controller="Map" asp-action="Parks">
+          <img alt="Парки та рекреаційні зони" src="~/img/image5.jpg"
+          width="40" height="40">
+          <p>Парки та рекреаційні зони</p>
+        </a>
+        <a class="nav-entity" asp-controller="Home" asp-action="Services">
+          <img alt="Сервіси Києва" src="~/img/image7.jpg"
+          width="40" height="40">
+          <p>Сервіси Києва</p>
+        </a>
+        <a class="nav-entity" asp-controller="Home" asp-action="War">
+          <img alt="Інформація про війну в Києві" src="~/img/image10.jpg"
+          width="40" height="40">
+          <p>Інформація про війну в Києві</p>
+        </a>
+      </nav>
         @if (User.Identity.IsAuthenticated)
         {
-        <p class="user-name">@User.Identity.Name</p>
+        <p class="user-name">@User.Identity.Name</p>    
         }
     </header>
-    <main>
         @RenderBody()
-    </main>
     <footer class="border-top">
 
         Created by Petselia Artem, Potapchuk Anna, Anastasia Grabovska, Polina Kuptsova and Belitskiy Oleksandr

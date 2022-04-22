@@ -38,9 +38,9 @@ namespace SmartCityKyiv.Controllers
             {
                 var hashPassword = Utilities.CreateHashString(model.Password);
                 User user = context.Users.FirstOrDefault(u => u.Email == model.Email && u.Password == hashPassword);
-                user.Role = context.Roles.FirstOrDefault(r => r.Id == user.RoleId);
                 if (user != null)
                 {
+                    user.Role = context.Roles.FirstOrDefault(r => r.Id == user.RoleId);
                     Authenticate(user); // authentication
 
                     return RedirectToAction("Index", "Home");

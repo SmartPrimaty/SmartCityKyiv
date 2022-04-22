@@ -4,17 +4,18 @@
 }
 @model IEnumerable<SmartCityKyiv.Models.Article>
 
-@if (User.IsInRole("moderator"))
-{
-<section class="center">
-    <a asp-controller="News" asp-action="Create">
-        <h2>Бажаєте створити новину?</h2>
-    </a>
-</section>
-}
+<main>
+    @if (User.IsInRole("moderator"))
+    {
+    <section class="center">
+        <a asp-controller="News" asp-action="Create">
+            <h2>Бажаєте створити новину?</h2>
+        </a>
+    </section>
+    }
 
-@foreach (Article article in Model)
-{
+    @foreach (Article article in Model)
+    {
     <section class="news-box">
         <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
             <h2 class="news-header">@article.Title</h2>
@@ -29,7 +30,8 @@
                     <text>...</text>
                 }
             }
-            </p>
+        </p>
     </section>
-}
+    }
+</main>
 
