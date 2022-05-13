@@ -2,33 +2,34 @@
     ViewData["Title"] = "Форма для додавання заходів";
 }
 @model SmartCityKyiv.Models.Event
-    <main>
-        <form method="post" asp-action="Create">
-            <h2>Створити подію</h2>
-            <input asp-for="Name" class="add-form" type="text" size="100" placeholder="Заголовок">
-            <span asp-validation-for="Name"></span>
-            <br>
-            <table>
-                <td>
-                    <p>Дата початку події:</p>
-                    <input asp-for="DateFrom" type="date">
-                    <br>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <p>Дата кінця події:</p>
-                    <input asp-for="DateTo" type="date">
-                    <br>
-                </td>
-            </table>
-            <br>
-            <span asp-validation-for="DateFrom"></span>
-            <p>Опис події:</p>
-            <textarea asp-for="Description" class="add-form" rows="20" cols="100"></textarea>
-            <br>
-            <input type="submit" value="Додати" class="btn-primary">
-            <a asp-controller="Event" asp-action="Index" type="button" class="btn-primary a-btn-primary">Відміна</a> <br>
-        </form>
-    </main>
+
+<main>
+    <form method="post" asp-action="Create">
+        <h2>Створити подію</h2>
+        <input asp-for="Name" class="add-form" type="text" size="100" placeholder="Заголовок">
+        <span asp-validation-for="Name"></span>
+        <br>
+        <table>
+            <td>
+                <p>Дата початку події:</p>
+                <input asp-for="DateFrom" type="date">
+                <br>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <p>Дата кінця події:</p>
+                <input asp-for="DateTo" type="date">
+                <br>
+            </td>
+        </table>
+        <br>
+        <span asp-validation-for="DateFrom"></span>
+        <p>Опис події:</p>
+        <textarea asp-for="Description" class="add-form" rows="20" cols="100"></textarea>
+        <br>
+        <input type="submit" value="Додати" class="btn-primary">
+        <a asp-controller="Event" asp-action="Index" type="button" class="btn-primary a-btn-primary">Відміна</a> <br>
+    </form>
+</main>

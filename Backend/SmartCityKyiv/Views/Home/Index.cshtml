@@ -1,129 +1,93 @@
 ﻿@model SmartCityKyiv.ViewModels.MainPageViewModel 
 @{ ViewData["Title"] = "Головна"; }
 
-<section class="grid-container">
-    <nav>
-        <p>
-            <a asp-controller="News" asp-action="Index">
-                <img alt="Новини" src="~/img/image1.jpg"
-                     width="40" height="40">
-                Новини
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Event" asp-action="Index">
-                <img alt="Заходи" src="~/img/image9.jpg"
-                     width="40" height="40">
-                Заходи
-            </a>
-        </p>
-        <p>
-            <a asp-action="Covid">
-                <img alt="COVID" src="~/img/image2.jpg"
-                     width="40" height="40">
-                Covid
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Map" asp-action="Parking">
-                <img alt="Паркування" src="~/img/image3.jpg"
-                     width="40" height="40">
-                Паркування
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Map" asp-action="Batteries">
-                <img alt="Батарейка" src="~/img/image4.jpg"
-                     width="40" height="40">
-                Батарейка
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Map" asp-action="Trash">
-                <img alt="Сортування сміття" src="~/img/image6.jpg"
-                     width="40" height="40">
-                Сортування сміття
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Map" asp-action="Sport">
-                <img alt="Спортивні майданчики" src="~/img/image8.jpg"
-                     width="40" height="40">
-                Спортивні майданчики
-            </a>
-        </p>
-        <p>
-            <a asp-controller="Map" asp-action="Parks">
-                <img alt="Парки та рекреаційні зони" src="~/img/image5.jpg"
-                     width="40" height="40">
-                Парки та рекреаційні зони
-            </a>
-        </p>
-        <p>
-            <a asp-action="Services">
-                <img alt="Сервіси Києва" src="~/img/image7.jpg"
-                     width="40" height="40">
-                Сервіси Києва
-            </a>
-        </p>
-        <p>
-            <a asp-action="War">
-                <img alt="Інформація про війну в Києві" src="~/img/image10.jpg"
-                     width="40" height="40">
-                Інформація про війну в Києві
-            </a>
-        </p>
-    </nav>
-    <section class="mainpage center">
 
-        <section>
-            <a asp-controller="News" asp-action="Index">
-                <h2>Останні новини</h2>
-            </a>
-            @foreach (var article in Model.Articles)
-            {
-                <section class="news-box">
-                    <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
-                        <h2 class="news-header">@article.Title</h2>
-                    </a>
-                    <p class="event-date"><i>@article.PublicationDate</i></p>
-                    <p>
-                   @if (article.Text is not null)
-                    {
-                        @article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
-                        @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
-                        {
-                            <text>...</text>
-                        }
-                    }
-                    </p>
-                </section>
-            }
+<main class="center">
+    <div class="slideshow-container">
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="slides fade">
+          <img src="~/img/kyiv1.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv2.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv3.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv4.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv5.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv6.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv7.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv8.png" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv9.jpg" style="width:90%">
+        </div>
+        <div class="slides fade">
+          <img src="~/img/kyiv10.jpg" style="width:90%">
+        </div>
+      </div>
+</main>
 
-        </section>
-        <section>
-            <a asp-controller="Event" asp-action="Index">
-                <h2>Останні заходи</h2>
+
+<main class="grid-container border-top">
+    <section class="main-news center">
+        <a asp-controller="News" asp-action="Index">
+            <h2>Останні новини</h2>
+        </a>
+        @foreach (var article in Model.Articles)
+        {
+        <section class="news-box">
+            <a asp-controller="News" asp-action="Article" asp-route-id="@article.Id">
+                <h2 class="news-header">@article.Title</h2>
             </a>
-            @foreach (var Event in Model.Events)
+            <p class="event-date"><i>@article.PublicationDate</i></p>
+            <p>
+            @if (article.Text is not null)
             {
-                <section class="news-box">
-                    <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
-                        <h2 class="news-header">@Event.Name</h2>
-                    </a>
-                    <p class="event-date"><i>@Event.DateFrom.Value.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
-                    <p>
-                    @if (Event.Description is not null)
-                    {
-                        @Event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, Event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2);
-                        @if (Event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
-                        {
-                            <text>...</text>
-                        }
-                    }
-                    </p>
-                </section>
+                @article.Text.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, article.Text.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2)
+                @if (article.Text.Split(new char[] { ' ', '\n' }).Length > 8)
+                {
+                    <text>...</text>
+                }
             }
+            </p>
         </section>
+        }
     </section>
-</section>
+
+    <section class="main-events center">
+        <a asp-controller="Event" asp-action="Index">
+            <h2>Останні заходи</h2>
+        </a>
+        @foreach (var Event in Model.Events)
+        {
+        <section class="news-box">
+            <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
+                <h2 class="news-header">@Event.Name</h2>
+            </a>
+            <p class="event-date"><i>@Event.DateFrom.Value.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
+            <p>
+            @if (Event.Description is not null)
+            {
+                @Event.Description.Split(new char[] { ' ', '\n' }).Take(Math.Min(8, Event.Description.Split(new char[] { ' ', '\n' }).Length)).Aggregate((s1, s2) => s1 + " " + s2);
+                @if (Event.Description.Split(new char[] { ' ', '\n' }).Length > 8)
+                {
+                    <text>...</text>
+                }
+            }
+            </p>
+        </section>
+        }
+    </section>
+</main>
