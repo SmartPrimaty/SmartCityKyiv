@@ -76,7 +76,7 @@
             <a asp-controller="Event" asp-action="Event" asp-route-id="@Event.Id">
                 <h2 class="news-header">@Event.Name</h2>
             </a>
-            <p class="event-date"><i>@Event.DateFrom.Value.ToShortDateString()  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault().ToShortDateString()); }</i></p>
+            <p class="event-date"><i>@Event.DateFrom.Value  @if (Event.DateTo.HasValue) { @String.Format("- {0}", Event.DateTo.GetValueOrDefault()); }</i></p>
             <p>
             @if (Event.Description is not null)
             {

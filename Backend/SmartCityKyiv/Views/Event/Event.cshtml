@@ -7,8 +7,8 @@
     <h2 class="news-header">@Model.Name</h2>
     <p class="event-date">
         <i>
-            @Model.DateFrom.Value.ToShortDateString()  @if (Model.DateTo.HasValue)
-            {@String.Format("- {0}", Model.DateTo.GetValueOrDefault().ToShortDateString());
+            @Model.DateFrom.Value  @if (Model.DateTo.HasValue)
+            {@String.Format("- {0}", Model.DateTo.GetValueOrDefault());
         }
         </i>
     </p>
